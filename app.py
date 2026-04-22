@@ -102,13 +102,7 @@ st.header("2. Alternative Data (Leading Indicators)")
 st.markdown("Analyzing non-structured market psychology metrics (e.g., Social Media Sentiment).")
 
 # Simulating Alternative Data
-dates = pd.date_range(start=start_date, end=end_date, freq='D')
-np.random.seed(42)
-alt_df = pd.DataFrame({
-    'Date': dates,
-    'Sentiment_Score': np.random.normal(loc=0.5, scale=0.2, size=len(dates)),
-    'Mention_Volume': np.random.randint(1000, 50000, size=len(dates))
-}).set_index('Date')
+alt_df = pd.read_csv('data/social_sentiment_data.csv', index_col='Date', parse_dates=True)
 
 # Dual-axis plotting
 fig2, ax1 = plt.subplots(figsize=(12, 5))
